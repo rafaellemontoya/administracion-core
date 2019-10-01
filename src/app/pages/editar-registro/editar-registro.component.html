@@ -1,0 +1,237 @@
+<!-- <div class="page_header">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12 col-sm-6">
+              <h1> Registro </h1>
+          </div>
+          <div class="col-lg-4 col-md-4 col-xs-12 col-sm-6">
+              <div class="sub_title_section">
+                  <ul class="sub_title">
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+<div  [hidden]="!guardado" class="section1_bottom_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-6">
+                    
+                    <div class="alert success">
+                        <div class="content_img">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="content_text">
+                            <h4>Registro guardado exitosamente!</h4>
+                            <p> <a (click)="atras()">Regresar</a> </p>
+                            
+                        </div>
+
+
+                    </div>
+                    
+
+
+
+
+                    
+
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<div id="main-wrapper">
+        <!-- formOne section start -->
+        
+        <!-- formOne section end -->
+        
+        <!-- formtwo section start -->
+        <form>
+        <div [hidden]="guardado"  class="formOne ptb-100">
+          <div style="margin-bottom: 50px; text-align: center;">
+            <h1 style=" font-size: 40px" > Editar registro IBF 2019</h1>
+          </div>
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                                
+                            
+                            <div class="col-md-6">
+                        <!--end of formtwo-contact-social -->
+        
+                        
+                          <div class="formtwo-right-1">
+                              <div class="form-group i-user">
+                                  <b style=" padding-bottom: 10px;">Número de pedido: *</b>
+                                  
+                                  <input  style=" margin-top: 10px;" type="number" class="form-control" required
+                                  [(ngModel)]="asistente.numeroPedido"
+                                  name="numeroPedido"
+                                  #numeroPedido="ngModel" placeholder="Número de pedido">
+                                  <div
+                              [hidden]="numeroPedido.valid || numeroPedido.pristine"
+                              class="alert alert-danger"
+                            >
+                              Se necesita un numero de pedido
+                            </div>
+                              </div>
+                          </div>
+        
+                          <div class="formtwo-right-1">
+                              <div class="form-group i-user">
+                                  <b style=" padding-bottom: 10px;">Tipo de asistente: *</b>
+                                  
+                                  
+                                  <select style=" margin-top: 10px;"  class="form-control" required
+                                  [(ngModel)]="asistente.tipoAsistente"
+                                  name="tipoAsistente"
+                                  #tipoAsistente="ngModel" >
+                                      <option value="Asistente" >Asistente</option>
+                                      <option value="Staff COPARMEX">Staff COPARMEX</option>
+                                      <option value="Speaker" >Speaker</option>
+                                      <option value="Invitado especial" >Invitado especial</option>
+                                      <option value="Prensa" >Prensa</option>
+                                      
+        
+        
+                                  </select>
+                              </div>
+                          </div>
+                          
+                          <div class="formtwo-right-1">
+                              <div class="form-group i-user">
+                                  <b style=" padding-bottom: 10px;">Nombre: *</b>
+                                  
+                                  <input  style=" margin-top: 10px;" type="text" class="form-control" required
+                                  [(ngModel)]="asistente.nombre"
+                                  name="nombre"
+                                  #nombre="ngModel" placeholder="Nombre">
+                                  <div
+                              [hidden]="nombre.valid || nombre.pristine"
+                              class="alert alert-danger"
+                            >
+                              Se necesita un nombre
+                            </div>
+                              </div>
+                          </div>
+        
+                          <div class="formtwo-right-1">
+                              <div class="form-group i-user">
+                                  <b style=" padding-bottom: 10px;">Apellido Materno:</b>
+                                  
+                                  <input  style=" margin-top: 10px;" type="text" class="form-control" 
+                                  [(ngModel)]="asistente.apellidoMaterno"
+                                  name="apellidoMaterno"
+                                  #apellidoMaterno="ngModel" placeholder="Apellido Materno">
+                                 
+                              </div>
+                          </div>
+                          <div class="formtwo-right-1">
+                              <div class="form-group i-user">
+                                  <b style=" padding-bottom: 10px;">Teléfono: *</b>
+                                  
+                                  <input  style=" margin-top: 10px;" type="text" class="form-control"  required
+                                  [(ngModel)]="asistente.telefono"
+                                  name="telefono"
+                                  #telefono="ngModel" placeholder="Teléfono">
+                                 
+                              </div>
+                          </div>
+                          
+                         
+        
+                          
+                              <button type="submit"style="background: #d9534f;"(click)="atras()" class="btn text-center btn-default btn-block">Cancelar</button>
+                              
+                         
+                    </div>
+                    <!--end of formtwo-contact-->
+                    <div class="col-md-6">
+        
+                            <div class="formtwo-right-1">
+                                <div class="form-group i-user">
+                                    <b style=" padding-bottom: 10px;">Producto: *</b>
+                                    
+                                    <select style=" margin-top: 10px;"  class="form-control" required
+                                    [(ngModel)]="asistente.producto"
+                                    name="producto"
+                                    #producto="ngModel" >
+                                        <option value="Experiencia IBF 2019" >Experiencia IBF 2019</option>
+                                        <option value="Experiencia IBF 2019 Plus">Experiencia IBF 2019 Plus</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="formtwo-right-2">
+                                <div class="formtwo-right-1">
+                                    <div class="form-group i-user">
+                                        <b style=" padding-bottom: 10px;">Título: *</b>
+                                        
+                                        <input  style=" margin-top: 10px;" type="text" class="form-control" required
+                                        [(ngModel)]="asistente.titulo"
+                                        name="titulo"
+                                        #titulo="ngModel" placeholder="Título">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="formtwo-right-1">
+                                <div class="form-group i-user">
+                                    <b style=" padding-bottom: 10px;">Apellido Paterno: *</b>
+                                    
+                                    <input  style=" margin-top: 10px;" type="text" class="form-control" required
+                                    [(ngModel)]="asistente.apellidoPaterno"
+                                    name="apellidoPaterno"
+                                    #apellidoPaterno="ngModel" placeholder="Apellido Paterno">
+                                   
+                                </div>
+                            </div>
+                            <div class="formtwo-right-1">
+                                <div class="form-group i-user">
+                                    <b style=" padding-bottom: 10px;">E-mail: *</b>
+                                    
+                                    <input  style=" margin-top: 10px;" type="text" class="form-control" required
+                                    [(ngModel)]="asistente.email"
+                                    name="email"
+                                    #email="ngModel" placeholder="E-mail">
+                                   
+                                </div>
+                            </div>
+                            <div class="formtwo-right-1">
+                                <div class="form-group i-user">
+                                    <b style=" padding-bottom: 10px;">Empresa: *</b>
+                                    
+                                    <input  style=" margin-top: 10px;" type="text" class="form-control" required
+                                    [(ngModel)]="asistente.empresa"
+                                    name="empresa"
+                                    #empresa="ngModel" placeholder="Empresa">
+                                   
+                                </div>
+                            </div>
+        
+        
+                           
+        
+        
+        
+                            
+                            
+                            
+                            <button type="submit"  style="background: #70ca63;" (click)="guardarAsistente()" class="btn text-center btn-default btn-block">Guardar e imprimir</button>
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </form>
+        
+        </div>
+        
+        
+        
