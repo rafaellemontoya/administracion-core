@@ -28,29 +28,25 @@ export class EditarRegistroComponent implements OnInit {
   }
 
   guardarAsistente() {
-    if (this.asistente.producto === 'Experiencia IBF 2019 Plus') {
-      this.asistente.comida = 1;
-    } else {
-      this.asistente.comida = 0;
-    }
+    
     this.http.editarParticipante(this.asistente).subscribe((data) => {
       console.log(data);
       if (data['respuesta'] === 1) {
         this.guardado = true;
         window.scroll(0, 0);
-        this.generarPDF(data['id']);
+    
       }
     });
 
   }
-  generarPDF(id: string) {
+  /*generarPDF(id: string) {
     const asistente = new Asistente();
     asistente.id = id;
     this.http.generarPDF(asistente).subscribe((data) => {
       console.log(data);
       this.imprimirPDF(asistente);
     });
-  }
+  }*/
   imprimirPDF(asistente: Asistente) {
     this.http.imprimirParticipante(asistente).subscribe((data) => {
       console.log(data);
@@ -65,16 +61,15 @@ export class EditarRegistroComponent implements OnInit {
     this.asistente.id = id;
     this.http.obtenerParticipante(this.asistente).subscribe((data) => {
       console.log (data);
-      this.asistente.apellidoPaterno = data['apellidoPaterno'];
-      this.asistente.apellidoMaterno = data['apellidoMaterno'];
+      this.asistente.nombre = data['nombre'];
+      this.asistente.apellido = data['apellido'];
       this.asistente.email = data['email'];
       this.asistente.empresa = data['empresa'];
-      this.asistente.estado = data['estado'];
-      this.asistente.nombre = data['nombre'];
-      this.asistente.numeroPedido = data['pedido'];
-      this.asistente.producto = data['producto'];
+      this.asistente.puesto = data['puesto'];
       this.asistente.telefono = data['telefono'];
-      this.asistente.tipoAsistente = data['tipoAsistente'];
+      this.asistente.idtaller = data['id_taller'];
+      this.asistente.nombretaller = data['nombre_taller'];
+
 
     });
   }

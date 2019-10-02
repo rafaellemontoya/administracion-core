@@ -67,7 +67,8 @@ export class BuscarRegistroComponent implements OnInit {
     console.log(this.sessionS.usuario);
     if (this.sessionS.usuario.name === undefined) {
       console.log('entro');
-      this.router.navigate(['inicio']);
+      this.getInfo();
+      //this.router.navigate(['inicio']);
     } else {
       console.log(this.sessionS.usuario.id);
       console.log('Entro a else');

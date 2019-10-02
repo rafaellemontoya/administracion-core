@@ -113,6 +113,11 @@
                                     <td>
                                         {{item.telefono}}
                                     </td>
+                                    <td>
+                                        <a [routerLink]="['/editar-registro',item.id_registro]" class="dropdown-toggle"  aria-expanded="false">
+                                            Actualizar
+                                         </a>
+                                    </td>
                                     
 
                                 </tr>

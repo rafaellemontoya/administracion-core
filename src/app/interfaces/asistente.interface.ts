@@ -1,11 +1,13 @@
 export class Asistente {
     id: string;
     nombre: string;
+    apellido:string;
     apellidoPaterno: string;
     apellidoMaterno: string;
     nombreCompleto: string;
     nombreBusqueda: string;
     empresa: string;
+    puesto: string;
     pais: string;
     calle: string;
     numeroExterior: string;
@@ -52,6 +54,8 @@ export class Asistente {
     numeroPedido: string;
     producto: string;
     direccion: string;
+    idtaller: number;
+    nombretaller: string;
 
 
 
