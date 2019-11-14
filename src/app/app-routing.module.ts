@@ -5,10 +5,12 @@ import { BuscarRegistroComponent } from './pages/buscar-registro/buscar-registro
 import { EditarRegistroComponent } from './pages/editar-registro/editar-registro.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AcompanantesComponent } from './pages/acompanantes/acompanantes.component';
 
 const routes: Routes = [
   {path: 'nuevo-registro', component: NuevoRegistroComponent},
   {path: 'buscar-registro', component: BuscarRegistroComponent},
+  {path: 'acompanantes', component: AcompanantesComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'editar-registro/:id', component: EditarRegistroComponent},
   {path: '', component: LoginComponent},

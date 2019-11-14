@@ -14,13 +14,19 @@ export class InicioComponent implements OnInit {
   user: User;
   taller1 = 0;
   taller2 = 0;
+  taller3 = 0;
+
+  totalRegistrados = 4;
+  totalAsistentes = 2;
+  totalRegistro = 0;
 
   title = 'Talleres';
   type = 'PieChart';
 
   dataGraph = [
-    ['Mediación de conflictos urbanos: ' + this.taller1, 3],
-    ['Regeneración del espacio público: ' + this.taller2, 4]
+    ['Walmart: ' + this.taller1, 3],
+    ['Linkedin: ' + this.taller2, 4],
+    ['Ideo U: ' + this.taller3, 4]
  ];
  columnNames = ['Browser', 'Percentage'];
  options = {
@@ -28,11 +34,24 @@ export class InicioComponent implements OnInit {
  width = 600;
  height = 400;
 
+ myOptions = {
+  colors: ['#20b3d6', '#93d08e', '#e4e35b'],
+  is3D: true
+};
+ myOptionsAsistente = {
+  colors: ['#1db2d9', '#e4e45b'],
+  is3D: true,
+  animation: {
+    duration: 10000,
+    easing: 'out',
+  }
+};
+
  titleGraph2 = 'Asistentes ';
- typeGraph2 = 'BarChart';
+ typeGraph2 = 'PieChart';
  dataGraph2 = [
-   ['Asistentes', 0 ],
-   ['Registrados', 0],
+   ['Asistentes', 3 ],
+   ['Registrados', 4],
 
 ];
 
@@ -46,7 +65,24 @@ heightGraph2 = 400;
   ngOnInit() {
     this.cargarCliente();
     // this.obtenerAsistencia();
-    // this.obtenerAsistenciaGraph2();
+    
+  }
+  obtenerCuentaParticipantes() {
+    this.http.obtenerCuentaParticipantes().subscribe((data) => {
+      console.log(data);
+
+      this.totalRegistro = data['total'];
+
+      
+      // tslint:disable-next-line:radix
+      const totalRegistrados = parseInt(data['registados']);
+      this.totalRegistrados = data['registados'];
+      // tslint:disable-next-line:radix
+      const totalAsistentes = parseInt(data['asistentes']);
+      this.totalAsistentes = data['asistentes'];
+      console.log(this.totalRegistrados);
+      this.loadDataGraph2(totalAsistentes, totalRegistrados );
+    });
   }
   obtenerAsistencia() {
     this.http.obtenerCuentaTalleres().subscribe((data) => {
@@ -58,38 +94,26 @@ heightGraph2 = 400;
       // tslint:disable-next-line:radix
       const taller2 = parseInt(data['taller2']);
       this.taller2 = data['taller2'];
-      this.loadDataGraph1(taller1, taller2 );
+      const taller3 = parseInt(data['taller3']);
+      this.taller3 = data['taller3'];
+      this.loadDataGraph1(taller1, taller2, taller3 );
     });
   }
-  loadDataGraph1(taller1: number, taller2: number) {
+  loadDataGraph1(taller1: number, taller2: number, taller3: number) {
     this.dataGraph = [
-      ['Mediación de conflictos urbanos', taller1],
-      ['Regeneración del espacio público', taller2]
+      ['Walmart', taller1],
+      ['Linkedin', taller2],
+      ['Ideo U', taller3]
    ];
   }
 
 
-  obtenerAsistenciaGraph2() {
-    this.http.obtenerTiposAsistentes().subscribe((data) => {
-      console.log(data);
 
-      let asistentes = parseInt(data['asistentes']);
-      // tslint:disable-next-line:radix
-      let staff = parseInt(data['staff']);
-      let speaker = parseInt(data['speaker']);
-      let invitado = parseInt(data['invitado']);
-      let prensa = parseInt(data['prensa']);
-      
-      this.loadDataGraph2(asistentes, staff, speaker, invitado, prensa );
-    });
-  }
-  loadDataGraph2(asistentes: number, staff: number, speaker: number, invitado: number, prensa: number) {
+  loadDataGraph2(asistentes: number, registrados: number) {
+    console.log(registrados);
     this.dataGraph2 = [
       ['Asistentes', asistentes ],
-      ['Staff COP', staff],
-      ['Speaker', speaker],
-      ['Invitado esp', invitado],
-      ['Prensa', prensa],
+      ['Registrados:', registrados]
    ];
   }
   cargarCliente() {
@@ -97,13 +121,16 @@ heightGraph2 = 400;
     if (this.sessionS.usuario.name === undefined) {
       console.log('entro');
       this.obtenerAsistencia();
-      this.router.navigate(['inicio']);
+      this.obtenerCuentaParticipantes();
+      // this.obtenerCuentaParticipantes();
+      // this.router.navigate(['login']);
     } else {
       console.log(this.sessionS.usuario.id);
       console.log('Entro a else');
 
       this.user = this.sessionS.usuario;
       this.obtenerAsistencia();
+      this.obtenerCuentaParticipantes();
     }
   }
 }

@@ -23,14 +23,27 @@ export class NuevoRegistroComponent implements OnInit {
   }
 
   guardarAsistente() {
-    console.log('guardar');
-    this.asistente.direccion = this.asistente.calle + ' ' + this.asistente.numeroExterior  + ' ' +  this.asistente.numeroInterior  + ' ' + 
-     this.asistente.cp + ' ' + this.asistente.estado + ' ' + this.asistente.ciudadPoblacion;
-    if (this.asistente.producto === 'EXPERIENCIA IBF 2019 PLUS (Incluye Conferencias y Comida Networking)') {
-      this.asistente.comida = 1;
-    } else {
-      this.asistente.comida = 0;
+    this.asistente.requiereHotel = '0';
+    console.log(this.asistente);
+    switch (this.asistente.nombretaller) {
+      case '1':
+        this.asistente.tallerA = 1;
+
+        this.asistente.tallerB = 0;
+        this.asistente.tallerC = 0;
+        break;
+        case '2':
+          this.asistente.tallerB = 1;
+          this.asistente.tallerA = 0;
+          this.asistente.tallerC = 0;
+          break;
+          case '3':
+            this.asistente.tallerC = 1;
+            this.asistente.tallerA = 0;
+            this.asistente.tallerB = 0;
+            break;
     }
+
     this.guardarService.nuevoParticipante(this.asistente).subscribe ( (data) => {
 
       // tslint:disable-next-line:no-string-literal

@@ -10,6 +10,28 @@ export class FiltroEmpresaPipe implements PipeTransform {
         }
         return array.filter(asistente =>
 
-            String(asistente.empresa).toLocaleLowerCase().indexOf(terminoBusqueda.toLocaleLowerCase()) !== -1);
+            this.hola( asistente.id_empresa).toLocaleLowerCase().indexOf(terminoBusqueda.toLocaleLowerCase()) !== -1);
+    }
+    hola(idEmpresa: string) {
+        let texto = '';
+        switch (idEmpresa) {
+      case '1':
+        texto = 'BX+';
+        break;
+        case '2':
+          texto = 'Byline Bank';
+          break;
+      case '3':
+        texto = 'Elementia';
+        break;
+        case '4':
+            texto = 'Kaluz';
+            break;
+            case '5':
+                texto = 'Orbia';
+                break;
+
+    }
+        return texto;
     }
 }

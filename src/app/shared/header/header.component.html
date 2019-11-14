@@ -10,12 +10,12 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="container">
               <div class="navbar-header hidden-xs hidden-sm">
-                  <a class="navbar-brand" ><img src="assets/images/logo.png" width=150 alt=""></a>
+                  <a class="navbar-brand" ><img src="assets/images/logo.png" width="60%" alt=""></a>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div [hidden]="!loggin" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
-                      <li class="active dropdown">
+                      <li [hidden]="!loggin" class="active dropdown">
                           <a routerLink="/inicio" class="dropdown-toggle"  aria-expanded="false">
                            Inicio
                         </a>
@@ -23,13 +23,18 @@
                       </li>
                       
                     <li class="active dropdown">
-                        <a routerLink="/buscar-registro" class="dropdown-toggle"  aria-expanded="false">
+                        <a [hidden]="!loggin" routerLink="/buscar-registro" class="dropdown-toggle"  aria-expanded="false">
                             Ver registro
                         </a>
 
+                    </li><li class="active dropdown">
+                        <a routerLink="/nuevo-registro" class="dropdown-toggle"  aria-expanded="false">
+                            Nuevo registro
+                        </a>
+
                     </li>
-                    <li class="active dropdown">
-                        <a href="../backend/sql-excel/obtener_datos.php" class="dropdown-toggle"  aria-expanded="false">
+                    <li [hidden]="loggin" class="active dropdown">
+                        <a href="https://www.kforum2020.com/backend/obtener_datos_Kforum.php" class="dropdown-toggle"  aria-expanded="false">
                             Descargar EXCEL
                         </a>
 
@@ -50,7 +55,7 @@
           <div class="container">
               <div class="row">
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                      <a class="navbar-brand"><img src="assets/images/logo_gris.png"width=170  alt=""></a>
+                      <a class="navbar-brand"><img src="assets/images/logo.png"width=50  alt=""></a>
                   </div>
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                       <button type="button" class="navbar-toggle collapsed" aria-expanded="false">
@@ -64,13 +69,15 @@
           </div>
       </div>
       <div id="sidebar">
-          <a class="sidebar_logo" ><img src="assets/images/logo_gris.png"width=170 alt=""></a>
+          <a class="sidebar_logo" ><img src="assets/images/logo.png"width=20 alt=""></a>
           <div id="toggle_close">&times;</div>
           <div id='cssmenu'>
               <ul>
-                  <li ><a href='#'>Home</a>
+                  <li ><a routerLink="/inicio">Home</a>
 
                   </li>
+                  <li ><a routerLink="/buscar-registro">Ver registro</a></li>
+                  <li ><a href="https://www.kforum2020.com/backend/obtener_datos_Kforum.php">Descargar excel</a></li>
 
               </ul>
           </div>

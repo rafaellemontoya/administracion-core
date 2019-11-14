@@ -7,17 +7,65 @@
     
     <div  class="formOne ptb-100">
       <div style="margin-bottom: 50px; text-align: center;">
-        <h1 style=" font-size: 40px" > CoRe Ciudades Vivibles y Amables 2019</h1>
+        <h1 style=" font-size: 40px" > K-Forum 2020</h1>
       </div>
         <div class="container">
-            <div class="row">
+            <div class="row" class="text-left" style="margin-bottom: 5%;">
+                <div class="">
+                        
+                    <div class="col-md-6">
+
+                        <h2 style="color:#1db2d9">
+                            Total Registrados: {{totalRegistro}}<br><br>
+                          </h2> 
+                           <h2 style="color:#1db2d9" >
+                            
+                          Total Asistentes: {{totalAsistentes}}<br><br>
+                        </h2> 
+                        <!--end of formtwo-contact-social -->
+                        
+                    </div>
+                    <div class="col-md-6">
+                      <!--end of formtwo-contact-social -->
+                      <h3 style="font-size: 18px;color:#72c7a3">
+                          Walmart: {{taller1}}<br><br>
+                          Linkedin: {{taller2}}<br><br>
+                          Ideo U: {{taller3}}
+
+                          
+                      </h3>
+                  </div>
+                    
+          
+            <!--end of formtwo-contact-->
+            
+        </div>
+      </div>
+      
+            <div class="row"style="margin-bottom: 20%;">
                     <div class="">
                             
                         
-                        <div class="col-md-12">
-                    <!--end of formtwo-contact-social -->
+                    <div class="col-md-6">
+                        <google-chart 
+                        [title]="titleGraph2"
+                        [options]="myOptionsAsistente"
+                        [type]="typeGraph2"
+                        [data]="dataGraph2"
+                        [columnNames]="columnNamesGraph2"
+                        [options]="optionsGraph2"
+                        [width]="widthGraph2"
+                        [height]="heightGraph2"
+                        [dynamicResize]="true">
+                     </google-chart>
+                    
+                    
+                </div>
+                <!--end of formtwo-contact-->
+                <div class="col-md-6">
                     <google-chart #chart
                     [title]="title"
+                    [options]="myOptions"
                     [type]="type"
                     [data]="dataGraph"
                     [columnNames]="columnNames"
@@ -26,22 +74,11 @@
                     [height]="height">
                  </google-chart>
                     
-                </div>
-                <!--end of formtwo-contact-->
-                <!-- <div class="col-md-6">
-                    <google-chart 
-                    [title]="titleGraph2"
-                    [type]="typeGraph2"
-                    [data]="dataGraph2"
-                    [columnNames]="columnNamesGraph2"
-                    [options]="optionsGraph2"
-                    [width]="widthGraph2"
-                    [height]="heightGraph2">
-                 </google-chart>
                        
-                </div> -->
+                </div> 
             </div>
         </div>
+ 
     </div>
     </div>
     

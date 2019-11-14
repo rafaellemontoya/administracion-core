@@ -59,16 +59,66 @@
             </div>
             <div class="shop_cart_page_wrapper">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    
+                    <div  [hidden]="!preguntaEliminar" class="section1_bottom_wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-6">
+                                    
+                                    <div class="alert warning">
+                                        <div class="content_img">
+                                            
+                                        </div>
+                                        <div class="content_text">
+                                            <h4>¿Estás seguro de eliminar el registro de {{nombreEliminar}}?</h4>
+                                             <button class="btn3" (click)="eliminar()">Aceptar</button> 
+                                            
+                                             <button class="btn1" style="margin-left: 20px;" (click)="preguntaEliminar=false;">Cancelar</button>
+                                        </div>
+                
+                
+                                    </div>
+                
+                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div  [hidden]="!estadoEliminado" class="section1_bottom_wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-6">
+                                    
+                                    <div class="alert success">
+                                        <div class="content_img">
+                                            
+                                        </div>
+                                        <div class="content_text">
+                                            <h4>Eliminado con éxito</h4>
+                                            <button class="btn3" (click)="idEliminar='';nombreEliminar='';estadoEliminado=false">Aceptar</button> 
+                                            
+                                            
+                                        </div>
+                
+                
+                                    </div>
+                
+                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-responsive cart-calculations">
                         <table class="table">
+                                
 
                             <thead class="cart_table_heading">
                                 
                                 <tr>
                                     <th>Id</th>
 
-                                    <th>Taller</th>
+                                    
                                     
                                     <th> Nombre</th>
                                     <th> Apellidos</th>
@@ -76,22 +126,25 @@
                                     
 
                                     <th>Empresa</th>
-                                    <th>Puesto</th>
-                                    <th>E-mail</th>
-                                    <th>Teléfono</th>
+                                    <!-- <th>Puesto</th> -->
+                                    <!-- <th>E mail</th> -->
+                                    <th>Taller</th>
+                                    <th>Imprimir<br> acompañante</th>
+                                    <th>Imprimir</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                    
                                     
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr  *ngFor="let item of usersJson[0] | filtroNombre: terminoBusquedaNombre | filtroApelllidoPaterno:terminoBusquedaApellido | filtroId: terminoBusquedaId | filtroPedido: terminoBusquedaPedido | filtroEmpresa: terminoBusquedaEmpresa | filtroTipo: terminoBusquedaTipo">
+                                    
+                                <tr [ngClass]="getClaseTipoAsistente(item.estado_asistencia)" *ngFor="let item of usersJson[0] | filtroNombre: terminoBusquedaNombre | filtroApelllidoPaterno:terminoBusquedaApellido | filtroId: terminoBusquedaId | filtroPedido: terminoBusquedaPedido | filtroEmpresa: terminoBusquedaEmpresa | filtroTipo: terminoBusquedaTipo">
                                     <td>
                                         {{item.id_registro}}
                                     </td>
-                                    <td>
-                                        {{getTaller(item.id_taller)}}
-                                        
-                                    </td>
+                                    
                                    
                                     
                                     <td>
@@ -102,25 +155,55 @@
                                     </td>
                                     
                                     <td>
-                                        {{item.empresa}}
+                                        {{getNombreEmpresa(item.id_empresa)}}
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         {{item.puesto}}
-                                    </td>
-                                    <td>
+                                    </td> -->
+                                    <!-- <td>
                                         {{item.email}}
-                                    </td>
+                                    </td> -->
                                     <td>
-                                        {{item.telefono}}
+                                        {{getNombreTaller(item.taller_a,item.taller_b,item.taller_c)}}
+                                        
                                     </td>
+                                    <!-- <td>
+                                        {{item.telefono}}
+                                    </td> -->
+
+                                    <td [hidden]="!estadoImprimiendo" >
+                                        imprimendo
+                                    </td>
+                                    <td >
+                                        <a [hidden]="!hayAcompanante(item.id_acompanante)" (click)="generarPDFAcompanante(item.id_acompanante)" class="dropdown-toggle"  aria-expanded="false">
+                                            <i class="fa fa-group" aria-hidden="true"></i>
+
+                                         </a>
+                                    </td> 
+                                    <td [hidden]="!estadoImprimiendo" >
+                                        imprimendo
+                                    </td>
+                                    <td [hidden]="estadoImprimiendo">
+                                        <a (click)="generarPDF(item.id_registro)" class="dropdown-toggle"  aria-expanded="false">
+                                            <i class="fa fa-print" aria-hidden="true"></i>
+
+                                         </a>
+                                    </td> 
                                     <td>
                                         <a [routerLink]="['/editar-registro',item.id_registro]" class="dropdown-toggle"  aria-expanded="false">
-                                            Actualizar
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                         </a>
+                                    </td>
+                                    <td>
+                                        <a (click)="preguntarEliminar(item.id_registro, item.nombre)" class="dropdown-toggle"  aria-expanded="false">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
                                          </a>
                                     </td>
                                     
+                                    
 
                                 </tr>
+                                
                           
                             </tbody>
                         </table>

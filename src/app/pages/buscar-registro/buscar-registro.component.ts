@@ -26,6 +26,13 @@ export class BuscarRegistroComponent implements OnInit {
   imprimiendo = false;
   user: User;
 
+  preguntaEliminar = false;
+  estadoEliminado = false;
+  idEliminar = '';
+  nombreEliminar = '';
+
+  estadoImprimiendo = false;
+
 
   constructor(private http: GuardarInfoService,  private sessionS: SessionService, private router: Router ) {
     this.cargarCliente();
@@ -53,14 +60,42 @@ export class BuscarRegistroComponent implements OnInit {
     }
     return clase;
   }
-  getTaller(taller: string) {
-    let texto = '-';
-    if (taller === '1') {
-      texto = 'Mediación de conflictos urbanos';
-    } else if (taller === '2') {
-      texto = 'Regeneración del espacio público';
+  getNombreTaller(tallerA, tallerB, tallerC) {
+    let texto = '';
+    if (tallerA === '1') {
+      texto = 'Walmart';
+    }
+    if (tallerB === '1') {
+      texto = 'Linkedin';
+    }
+    if (tallerC === '1') {
+      texto = 'Ideo U';
     }
     return texto;
+  }
+
+  getNombreEmpresa(idEmpresa: string) {
+    let texto = '';
+    switch (idEmpresa) {
+      case '1':
+        texto = 'BX+';
+        break;
+        case '2':
+          texto = 'Byline Bank';
+          break;
+      case '3':
+        texto = 'Elementia';
+        break;
+        case '4':
+            texto = 'Kaluz';
+            break;
+            case '5':
+                texto = 'Orbia';
+                break;
+
+    }
+    return texto;
+
   }
 
   cargarCliente() {
@@ -68,7 +103,7 @@ export class BuscarRegistroComponent implements OnInit {
     if (this.sessionS.usuario.name === undefined) {
       console.log('entro');
       this.getInfo();
-      //this.router.navigate(['inicio']);
+      this.router.navigate(['login']);
     } else {
       console.log(this.sessionS.usuario.id);
       console.log('Entro a else');
@@ -78,5 +113,84 @@ export class BuscarRegistroComponent implements OnInit {
     }
   }
 
+  preguntarEliminar(id, nombre) {
 
+    window.scroll(0, 0);
+    this.preguntaEliminar = true;
+    this.idEliminar = id;
+    console.log(this.idEliminar);
+    this.nombreEliminar = nombre;
+
+  }
+  eliminar() {
+    this.preguntaEliminar = false;
+    const asistente = new Asistente();
+    asistente.id = this.idEliminar;
+    this.http.eliminarAsistente(asistente).subscribe((data) => {
+      console.log(data);
+      if (data['respuesta'] === 1) {
+        this.getInfo();
+        this.estadoEliminado = true;
+
+        window.scroll(0, 0);
+    
+      }
+      // tslint:disable-next-line:no-string-literal
+      // this.items = data;
+      this.usersJson = Array.of(data);
+      console.log (this.usersJson);
+    });
+
+  }
+
+  hayAcompanante(id: string) {
+    let respuesta = false;
+    if (id !== '-1') {
+      respuesta = true;
+    }
+    return respuesta;
+  }
+
+
+  generarPDF(id: string) {
+    console.log(this.estadoImprimiendo);
+    this.imprimiendo = true;
+    this.estadoImprimiendo = true;
+    window.scroll(0, 0);
+    const asistente = new Asistente();
+    asistente.id = id;
+    console.log(this.estadoImprimiendo);
+    this.http.generarPDF(asistente).subscribe((data) => {
+      console.log(data);
+      this.imprimirPDF(asistente);
+      this.getInfo();
+    });
+  }
+  generarPDFAcompanante(id: string) {
+    const idNum = Number(id) + 1000;
+
+    
+    this.imprimiendo = true;
+    this.estadoImprimiendo = true;
+    window.scroll(0, 0);
+    const asistente = new Asistente();
+    asistente.id = idNum.toString();
+    console.log(asistente.id);
+    console.log(this.estadoImprimiendo);
+    this.http.generarPDF(asistente).subscribe((data) => {
+      console.log(data);
+      this.imprimirPDF(asistente);
+      this.getInfo();
+    });
+  }
+  imprimirPDF(asistente: Asistente){
+    this.estadoImprimiendo = false;
+    this.http.imprimirParticipante(asistente).subscribe((data) => {
+      console.log(data);
+      this.estadoImprimiendo=false;
+    });
+  }
+  
+  
 }
+

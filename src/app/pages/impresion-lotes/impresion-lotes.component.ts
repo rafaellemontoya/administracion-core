@@ -18,24 +18,7 @@ export class ImpresionLotesComponent implements OnInit {
     console.log(id);
     const as = new Asistente();
     as.id = id.toString();
-    this.http.obtenerLote(as).subscribe((data)=>{
-      const usersJson = Array.of(data);
-      let c = 0;
-      usersJson.forEach(element => {
-        
-        console.log(element);
-        this.imprimir2(element[0].id);
-        
-      });
-      
-      // let cont = 0;
-      // data.forEach(element => {
-        
-      // });
-       
-      // console.log(data);
 
-    });
 
     
   }

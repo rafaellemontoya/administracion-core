@@ -79,8 +79,8 @@ form .btn{
 	margin: 0 auto;
 	display: block;
 	margin-top: 10px;
-	background: #4285f4;
-	border: 1px solid #4285f4;
+	background: transparent;
+	border: 1px solid transparent;
     -webkit-transition      : all 0.3s ease 0s;
     -moz-transition      : all 0.3s ease 0s;
     -o-transition      : all 0.3s ease 0s;
@@ -88,9 +88,9 @@ form .btn{
 }
 .formOne button.btn:focus,
 .formOne button.btn:hover {
-	border-color: #4285f4;
+	border-color: transparent;
 	background-color: transparent;
-	color: #4285f4;
+	color: transparent;
 }
 
 /*formOne section end*/

@@ -20,6 +20,10 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import { ImpresionLotesComponent } from './pages/impresion-lotes/impresion-lotes.component';
 import { FiltroTipoPipe } from './pipes/tipo-filter.pipi';
 import { LoginComponent } from './pages/login/login.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AcompanantesComponent } from './pages/acompanantes/acompanantes.component';
+
 const routes: Routes = [
 
 ];
@@ -38,7 +42,8 @@ const routes: Routes = [
     InicioComponent,
     EditarRegistroComponent,
     ImpresionLotesComponent,
-    LoginComponent
+    LoginComponent,
+    AcompanantesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     GoogleChartsModule,
+    NgbModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [],

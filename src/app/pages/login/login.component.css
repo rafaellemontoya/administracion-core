@@ -37,13 +37,14 @@
 	margin-bottom:20px;
 	text-align:left;
 	border-radius:5px;
-    background: #4385f5;
+    background: linear-gradient(90deg, #42b574 0%, #84c450 100%);
+    
     font-size: 16px;
-    border: 1px solid #4385f5;
+    
 }
 .login_wrapper a.btn:hover {
-   background-color: #2c6ad4;
-   border-color: #2c6ad4;
+    
+   background:  linear-gradient(90deg, #42b574 0%, #84c450 100%);
 }
 .login_wrapper a span{
 	float:left;
@@ -110,7 +111,7 @@
 .login_wrapper .form-control:focus {
 	color: #999;
 	background-color: fafafa;
-	border: 1px solid #4285f4 !important;	
+	border: 1px solid #84c450 !important;	
 }
 .login_wrapper  .formsix-pos,.formsix-e{
 	position: relative;
@@ -193,8 +194,9 @@
    text-transform:uppercase;
 }
 .login_btn_wrapper a.login_btn:hover {
-    background-color: #2c6ad4;
-    border-color: #2c6ad4;
+    /* background-color: #2c6ad4;
+    border-color: #2c6ad4; */
+    background:linear-gradient(90deg, #42b574 0%, #84c450 100%);
 }
 .login_message p{
 	text-align:center;
@@ -202,7 +204,7 @@
 	margin:0;
 }
 .login_message a{
-	color:#4385f5;
+	color:#84c450;
 }
 .login_message a:hover{
 	background:#fff;
