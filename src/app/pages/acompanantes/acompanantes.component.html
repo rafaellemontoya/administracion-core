@@ -1,1 +1,207 @@
-<p>acompanantes works!</p>
+<div class="cart_product_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="btc_shop_single_prod_right_section shop_product_single_head related_pdt_shop_head">
+                    <h1>Buscar registro</h1>
+                </div>
+            </div>
+            
+            <div class="shop_cart_page_wrapper">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    
+                    <div id="" class="lv_search_box" style="display: block;">
+                        <input type="text"  class="form-control"placeholder="Buscar ID" [(ngModel)]="terminoBusquedaId">
+                            <button (click)="terminoBusquedaId = ''"><i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                </div>
+               
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            
+                            <div id="" class="lv_search_box" style="display: block;">
+                                <input type="text" placeholder="Buscar NOMBRE" [(ngModel)]="terminoBusquedaNombre" class="form-control">
+                                    <button (click)="terminoBusquedaNombre = ''"><i class="fa fa-close" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                
+                                <div id="" class="lv_search_box" style="display: block;">
+                                    <input type="text" placeholder="Buscar APELLIDO" [(ngModel)]="terminoBusquedaApellido" class="form-control">
+                                        <button (click)="terminoBusquedaApellido = ''"><i class="fa fa-close" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                            </div>
+
+                         
+
+                             
+                              
+
+            </div>
+            <div class="shop_cart_page_wrapper">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div  [hidden]="!preguntaEliminar" class="section1_bottom_wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-6">
+                                    
+                                    <div class="alert warning">
+                                        <div class="content_img">
+                                            
+                                        </div>
+                                        <div class="content_text">
+                                            <h4>¿Estás seguro de eliminar el registro de {{nombreEliminar}}?</h4>
+                                             <button class="btn3" (click)="eliminar()">Aceptar</button> 
+                                            
+                                             <button class="btn1" style="margin-left: 20px;" (click)="preguntaEliminar=false;">Cancelar</button>
+                                        </div>
+                
+                
+                                    </div>
+                
+                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div  [hidden]="!estadoEliminado" class="section1_bottom_wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-6">
+                                    
+                                    <div class="alert success">
+                                        <div class="content_img">
+                                            
+                                        </div>
+                                        <div class="content_text">
+                                            <h4>Eliminado con éxito</h4>
+                                            <button class="btn3" (click)="idEliminar='';nombreEliminar='';estadoEliminado=false">Aceptar</button> 
+                                            
+                                            
+                                        </div>
+                
+                
+                                    </div>
+                
+                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive cart-calculations">
+                        <table class="table">
+                                
+
+                            <thead class="cart_table_heading">
+                                
+                                <tr>
+                                    <th>Id</th>
+                                  
+                                    
+                                    <th> Nombre</th>
+                                    <th> Apellidos</th>
+
+                                    <th>Imprimir</th>
+                                     <th>Eliminar</th>
+                                    
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    
+                                <tr [ngClass]="getClaseTipoAsistente(item.estado_asistencia)" *ngFor="let item of usersJson[0] | filtroNombre: terminoBusquedaNombre | filtroApelllidoPaterno:terminoBusquedaApellido | filtroId: terminoBusquedaId | filtroPedido: terminoBusquedaPedido | filtroEmpresa: terminoBusquedaEmpresa | filtroTipo: terminoBusquedaTipo">
+                                    <td>
+                                        {{item.id_acompanante}}
+                                    </td>
+                                    
+                                                                  
+                                    <td>
+                                        {{item.nombre}}
+                                    </td>
+                                    <td>
+                                        {{item.apellido}}
+                                    </td>
+                                    
+                                   
+                                   
+                                   
+
+                                  
+                                    <td [hidden]="!estadoImprimiendo" >
+                                        imprimendo
+                                    </td>
+                                    <td [hidden]="estadoImprimiendo">
+                                        <a (click)="generarPDF(item.id_registro)" class="dropdown-toggle"  aria-expanded="false">
+                                            <i class="fa fa-print" aria-hidden="true"></i>
+
+                                         </a>
+                                    </td> 
+                                   
+                                    <td>
+                                        <a (click)="preguntarEliminar(item.id_registro, item.nombre)" class="dropdown-toggle"  aria-expanded="false">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                         </a>
+                                    </td>
+                                    
+                                    
+
+                                </tr>
+                                
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                   
+
+                </div>
+
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+
+  <!-- No hay permisos
+  <section [hidden]="empleadoActual.permisos.empleados" id="content_wrapper">
+    <header id="topbar" class="bg-white alt">
+      <div class="topbar-left">
+        <ol class="breadcrumb mt-10">
+          <li class="crumb-active"><a routerLink="/inicio">Sistema Memphis</a></li>
+  
+        </ol>
+      </div>
+  
+    </header>
+    <div id="content" class="animated fadeIn">
+  
+  
+      <div class="row">
+        <div class="col-md-12">
+  
+  
+          <hr class="mt20 mb30">
+  
+  
+          <div class="">
+            <div class="alert alert-danger alert-dismissable mb30">
+  
+              <h5 class="mt5">Error</h5>
+              <h3 class="mt5">No tienes acceso a ésta sección</h3>
+              <p>Ponte en contacto con el administrador.</p><br>
+              <div class="element-groups-sm-custom"><a (click)="atras()" class="btn btn-white">REGRESAR</a></div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>-->

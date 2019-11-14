@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AcompanantesComponent } from './pages/acompanantes/acompanantes.component';
+import { NuevoAcompananteComponent } from './pages/nuevo-acompanante/nuevo-acompanante.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,7 @@ const routes: Routes = [
     ImpresionLotesComponent,
     LoginComponent,
     AcompanantesComponent,
+    NuevoAcompananteComponent,
   ],
   imports: [
     BrowserModule,
