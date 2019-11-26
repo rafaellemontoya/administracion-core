@@ -34,10 +34,11 @@ export class AcompanantesComponent implements OnInit {
   constructor(private http: GuardarInfoService,  private sessionS: SessionService, private router: Router) { }
 
   ngOnInit() {
+    this.getInfo();
   }
 
   getInfo() {
-    this.http.obtenerParticipantes().subscribe((data) => {
+    this.http.obtenerAcompanantes().subscribe((data) => {
       console.log(data);
       // tslint:disable-next-line:no-string-literal
       // this.items = data;
@@ -103,7 +104,7 @@ export class AcompanantesComponent implements OnInit {
       console.log('Entro a else');
 
       this.user = this.sessionS.usuario;
-      this.getInfo();
+      // this.getInfo();
     }
   }
 
@@ -147,12 +148,14 @@ export class AcompanantesComponent implements OnInit {
 
 
   generarPDF(id: string) {
+    const idNum = Number(id) + 1000;
     console.log(this.estadoImprimiendo);
     this.imprimiendo = true;
     this.estadoImprimiendo = true;
     window.scroll(0, 0);
     const asistente = new Asistente();
-    asistente.id = id;
+    asistente.id = idNum.toString();
+    
     console.log(this.estadoImprimiendo);
     this.http.generarPDF(asistente).subscribe((data) => {
       console.log(data);
@@ -173,7 +176,7 @@ export class AcompanantesComponent implements OnInit {
     console.log(this.estadoImprimiendo);
     this.http.generarPDF(asistente).subscribe((data) => {
       console.log(data);
-      this.imprimirPDF(asistente);
+      // this.imprimirPDF(asistente);
       this.getInfo();
     });
   }

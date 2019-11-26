@@ -1,0 +1,61 @@
+
+                
+
+
+                  <div id="main-wrapper">
+                    <!-- formOne section start -->
+                    
+                    <!-- formOne section end -->
+                    
+                    <!-- formtwo section start -->
+                    
+                    <div  class="formOne ptb-100">
+                      <div style="margin-bottom: 50px; text-align: center;">
+                        <h1 style=" font-size: 40px" >Encuesta K-Forum 2020</h1>
+                      </div>
+                        <div class="container">
+                            <div class="row" class="text-left" style="margin-bottom: 5%;">
+                                <div class="">
+                                        <a href="https://www.kforum2020.com/backend/obtener_datos_Kforum_respuestas.php" class="dropdown-toggle"  aria-expanded="false">
+                                            <h2 style="color:#20b3d6; margin-left: 20px;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar EXCEL de respuestas </h2>
+                                        </a>
+
+                                        <h2 style=" margin-left: 20px;margin-top: 25px"> Total de encuestas contestadas: {{numeroRespuestas}} </h2>
+                                        
+                                    
+                                   
+                                    
+                          
+                            <!--end of formtwo-contact-->
+                            
+                        </div>
+                      </div>
+                      
+                            <div class="row"style="margin-bottom: 10%;">
+                                    <div class="">
+                                            
+                                        
+                                        <div *ngFor="let chart of charts" class="col-md-6" style="margin-top: 25px;
+                                        ">
+                                             <google-chart class="chart"
+
+                                               [title]="chart.title"
+                                               [type]="chart.type"
+                                               [data]="chart.data"
+                                               [columnNames]="chart.columnNames"
+                                               [roles]="chart.roles"
+                                               [options]="chart.options"
+                                             >
+                                             </google-chart>
+                                           </div>
+                                <!--end of formtwo-contact-->
+                                
+                            </div>
+                        </div>
+                 
+                    </div>
+                    </div>
+                    
+                    
+                    </div>
+                

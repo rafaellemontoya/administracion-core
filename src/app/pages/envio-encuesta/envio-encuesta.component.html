@@ -1,0 +1,163 @@
+<div class="cart_product_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="btc_shop_single_prod_right_section shop_product_single_head related_pdt_shop_head">
+                    <h1>Envío de encuesta</h1>
+                </div>
+            </div>
+            <a href="https://www.kforum2020.com/backend/obtener_datos_Kforum_mail.php" class="dropdown-toggle"  aria-expanded="false">
+                <h2 style="color:#20b3d6; margin-left: 20px;"><i class="fa fa-cloud-download" aria-hidden="true"></i> Descargar EXCEL de envío </h2>
+            </a>
+            
+            <div class="shop_cart_page_wrapper">
+                
+                
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            
+                            <div id="" class="lv_search_box" style="display: block;">
+                                <input type="text" placeholder="Buscar NOMBRE" [(ngModel)]="terminoBusquedaNombre" class="form-control">
+                                    <button (click)="terminoBusquedaNombre = ''"><i class="fa fa-close" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                
+                                <div id="" class="lv_search_box" style="display: block;">
+                                    <input type="text" placeholder="Buscar APELLIDO" [(ngModel)]="terminoBusquedaApellido" class="form-control">
+                                        <button (click)="terminoBusquedaApellido = ''"><i class="fa fa-close" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                
+                                
+                            </div>
+
+                            
+
+                             
+                              
+
+            </div>
+            <div class="shop_cart_page_wrapper">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   
+                    
+                    <div class="table-responsive cart-calculations">
+                        <table class="table">
+                                
+
+                            <thead class="cart_table_heading">
+                                
+                                <tr>
+                                    <th>Id</th>
+
+                                    
+                                    
+                                    <th> Nombre</th>
+                                    <th> Apellidos</th>
+                                    <!-- <th>Puesto</th> -->
+                                    <!-- <th>E mail</th> -->
+                                    <th>Num. Correos enviados</th>
+                                    <th>Abrio correo</th>
+                                    <th>Fecha apertura<br> correo</th>
+                                    
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    
+                                <tr *ngFor="let item of usersJson[0] | filtroNombre: terminoBusquedaNombre | filtroApelllidoPaterno:terminoBusquedaApellido ">
+                                    <td>
+                                        {{item.id_encuesta}}
+                                    </td>
+                                    
+                                   
+                                    
+                                    <td>
+                                        {{item.nombre}}
+                                    </td>
+                                    <td>
+                                        {{item.apellido}}
+                                    </td>
+                                    
+                                    <td>
+                                        {{item.estado_envio}}
+                                    </td>
+                                    
+                                    <td>
+                                        {{getTextoEnvio(item.estado_apertura_correo)}}
+                                        
+                                    </td>
+                                    <td>
+                                        {{item.fecha_apertura }}
+                                        
+                                    </td>
+                                    <!-- <td>
+                                        {{item.telefono}}
+                                    </td> -->
+
+                                    
+                                   
+                                    
+                                    
+                                    
+
+                                </tr>
+                                
+                          
+                            </tbody>
+                        </table>
+                    </div>
+
+                   
+
+                </div>
+
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+
+  <!-- No hay permisos
+  <section [hidden]="empleadoActual.permisos.empleados" id="content_wrapper">
+    <header id="topbar" class="bg-white alt">
+      <div class="topbar-left">
+        <ol class="breadcrumb mt-10">
+          <li class="crumb-active"><a routerLink="/inicio">Sistema Memphis</a></li>
+  
+        </ol>
+      </div>
+  
+    </header>
+    <div id="content" class="animated fadeIn">
+  
+  
+      <div class="row">
+        <div class="col-md-12">
+  
+  
+          <hr class="mt20 mb30">
+  
+  
+          <div class="">
+            <div class="alert alert-danger alert-dismissable mb30">
+  
+              <h5 class="mt5">Error</h5>
+              <h3 class="mt5">No tienes acceso a ésta sección</h3>
+              <p>Ponte en contacto con el administrador.</p><br>
+              <div class="element-groups-sm-custom"><a (click)="atras()" class="btn btn-white">REGRESAR</a></div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>-->

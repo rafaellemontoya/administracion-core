@@ -7,6 +7,8 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AcompanantesComponent } from './pages/acompanantes/acompanantes.component';
 import { NuevoAcompananteComponent } from './pages/nuevo-acompanante/nuevo-acompanante.component';
+import { EncuestaComponent } from './pages/encuesta/encuesta.component';
+import { EnvioEncuestaComponent } from './pages/envio-encuesta/envio-encuesta.component';
 
 const routes: Routes = [
   {path: 'nuevo-registro', component: NuevoRegistroComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'nuevo-acompanante', component: NuevoAcompananteComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'editar-registro/:id', component: EditarRegistroComponent},
+  {path: 'envio-encuesta', component: EnvioEncuestaComponent},
+  {path: 'encuesta', component: EncuestaComponent},
   {path: '', component: LoginComponent},
   { path: '**', pathMatch: 'full', redirectTo: ''}
 

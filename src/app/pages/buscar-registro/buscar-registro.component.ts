@@ -35,15 +35,15 @@ export class BuscarRegistroComponent implements OnInit {
 
 
   constructor(private http: GuardarInfoService,  private sessionS: SessionService, private router: Router ) {
-   // this.cargarCliente();
+   this.cargarCliente();
    }
 
   ngOnInit() {
-    this.getInfo();
+    // this.getInfo();
   }
 
   getInfo() {
-    this.http.obtenerAcompanantes().subscribe((data) => {
+    this.http.obtenerParticipantes().subscribe((data) => {
       console.log(data);
       // tslint:disable-next-line:no-string-literal
       // this.items = data;

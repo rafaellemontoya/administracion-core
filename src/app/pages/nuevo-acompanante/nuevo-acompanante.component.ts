@@ -26,7 +26,7 @@ export class NuevoAcompananteComponent implements OnInit {
     this.asistente.requiereHotel = '0';
     console.log(this.asistente);
 
-    this.guardarService.nuevoParticipante(this.asistente).subscribe ( (data) => {
+    this.guardarService.nuevoAcompanante(this.asistente).subscribe ( (data) => {
 
       // tslint:disable-next-line:no-string-literal
       if (data['estado'] === 1) {

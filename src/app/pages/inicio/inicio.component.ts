@@ -120,10 +120,8 @@ heightGraph2 = 400;
     console.log(this.sessionS.usuario);
     if (this.sessionS.usuario.name === undefined) {
       console.log('entro');
-      this.obtenerAsistencia();
-      this.obtenerCuentaParticipantes();
       // this.obtenerCuentaParticipantes();
-      // this.router.navigate(['login']);
+      this.router.navigate(['login']);
     } else {
       console.log(this.sessionS.usuario.id);
       console.log('Entro a else');

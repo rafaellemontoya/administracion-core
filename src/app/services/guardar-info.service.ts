@@ -16,6 +16,10 @@ nuevoParticipante(asistente: Asistente) {
 
   return this.http.post('https://www.kforum2020.com/backend/insertar_sistema_admin.php', asistente);
 }
+nuevoAcompanante(asistente: Asistente) {
+
+  return this.http.post('https://www.kforum2020.com/backend/insertar_acompanante_sistema_admin.php', asistente);
+}
 
 obtenerParticipantes() {
 
@@ -74,5 +78,14 @@ login(user: User) {
 }
 enviarCorreoConfirmacion(asistente: Asistente) {
   return this.http.post('https://www.kforum2020.com/backend/enviar_correo_edicion.php', asistente );
+}
+
+obtenerEnvioEcuesta(): Observable<any[]>  {
+  return this.http.get<any>('https://www.kforum2020.com/comunica/encuesta/backend/obtener_info_envio.php')
+      ;
+}
+obtenerDatosEcuesta(url: string): Observable<any[]>  {
+  return this.http.get<any>('https://www.kforum2020.com/comunica/encuesta/backend/' + url)
+      ;
 }
 }
